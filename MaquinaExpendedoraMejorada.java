@@ -28,7 +28,7 @@ public class MaquinaExpendedoraMejorada {
     /**
      * Nuevo constructor.
      */
-    public MaquinaExpendedoraMejorada(){
+    public MaquinaExpendedoraMejorada() {
         precioBillete = 8;
         balanceClienteActual = 0;
         totalDineroAcumulado = 0;
@@ -96,5 +96,16 @@ public class MaquinaExpendedoraMejorada {
         cantidadDeDineroADevolver = balanceClienteActual;
         balanceClienteActual = 0;
         return cantidadDeDineroADevolver;
-    } 
+    }
+    
+    /**
+     * Vacioado total de la maquina expendedora
+     */
+    public int vaciarDineroDeLaMaquina() {
+        int vaciarDineroDeLaMaquina;
+        vaciarDineroDeLaMaquina= balanceClienteActual + totalDineroAcumulado;
+        balanceClienteActual = 0;
+        totalDineroAcumulado = 0;
+        return vaciarDineroDeLaMaquina;
+    }
 }
