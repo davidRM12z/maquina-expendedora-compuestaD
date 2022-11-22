@@ -24,7 +24,18 @@ public class MaquinaExpendedoraMejorada {
         estacionDestino = destino;
 
     }
-
+    
+    /**
+     * Nuevo constructor.
+     */
+    public MaquinaExpendedoraMejorada(){
+        precioBillete = 8;
+        balanceClienteActual = 0;
+        totalDineroAcumulado = 0;
+        estacionOrigen = "León";
+        estacionDestino = "Guardo";
+    }
+    
     /**
      * Devuelve el precio del billete
      */
