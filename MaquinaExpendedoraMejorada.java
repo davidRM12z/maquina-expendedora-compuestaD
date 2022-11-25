@@ -99,7 +99,8 @@ public class MaquinaExpendedoraMejorada {
     }
     
     /**
-     * Vacioado total de la maquina expendedora
+     * Vacioado total de la maquina expendedora 
+     * tiene que imprimir -1 y vaciar los das acumulaciones de sinero
      */
     public int vaciarDineroDeLaMaquina() {
         int vaciarDineroDeLaMaquina;
@@ -108,6 +109,7 @@ public class MaquinaExpendedoraMejorada {
         }
         else {
             vaciarDineroDeLaMaquina = -1;
+            System.out.println("Error: Operacion en curso, cancele y recoja el dinero");
         }
         return vaciarDineroDeLaMaquina;
     }
