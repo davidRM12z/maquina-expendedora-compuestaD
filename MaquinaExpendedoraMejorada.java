@@ -100,12 +100,13 @@ public class MaquinaExpendedoraMejorada {
     
     /**
      * Vacioado total de la maquina expendedora 
-     * tiene que imprimir -1 y vaciar los das acumulaciones de sinero
      */
     public int vaciarDineroDeLaMaquina() {
         int vaciarDineroDeLaMaquina;
         if (balanceClienteActual == 0) {
             vaciarDineroDeLaMaquina = totalDineroAcumulado - balanceClienteActual;
+            balanceClienteActual = 0;
+            totalDineroAcumulado = 0;
         }
         else {
             vaciarDineroDeLaMaquina = -1;
