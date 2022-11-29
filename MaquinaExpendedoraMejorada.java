@@ -68,6 +68,7 @@ public class MaquinaExpendedoraMejorada {
         if (cantidadIntroducida > 0) {
             balanceClienteActual = balanceClienteActual + cantidadIntroducida;
             if (billetesVendidos >= maximoBilletes){
+                balanceClienteActual = balanceClienteActual - cantidadIntroducida;
                 System.out.println("Error: Maximo de billetes vendidos");
             }
         }
