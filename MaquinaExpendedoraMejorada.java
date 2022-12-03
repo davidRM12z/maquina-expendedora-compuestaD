@@ -16,6 +16,9 @@ public class MaquinaExpendedoraMejorada {
     private boolean tipoMaquina;
     // Maximo de billetes
     private int maximoBilletes;
+    // Billetes premiados
+    private int billeteConPremio;
+    
 
     /**
      * Crea una maquina expendedora de billetes de tren con el 
@@ -31,6 +34,7 @@ public class MaquinaExpendedoraMejorada {
         billetesVendidos = 0;
         tipoMaquina = maquinaNormal;
         maximoBilletes = maximoDeBilletes;
+        billeteConPremio = 4;
     }
     
     /**
@@ -45,6 +49,7 @@ public class MaquinaExpendedoraMejorada {
         billetesVendidos = 0;
         tipoMaquina = maquinaNormal;
         maximoBilletes = maximoDeBilletes;
+        billeteConPremio = 4;
     }
     
     /**
@@ -84,43 +89,34 @@ public class MaquinaExpendedoraMejorada {
      public void imprimirBillete() {
         int cantidadDeDineroQueFalta = precioBillete - balanceClienteActual;
          if (cantidadDeDineroQueFalta <= 0) {  
-            if(billetesVendidos >= maximoBilletes){
-                System.out.println("Error: Maximo de billetes vendidos");
+            if(billetesVendidos < maximoBilletes){
+                // Simula la impresion de un billete
+                System.out.println("##################");
+                System.out.println("# Billete de tren:");
+                System.out.println("# De " + estacionOrigen + " a " + estacionDestino);
+                System.out.println("# " + precioBillete + " euros.");
+                System.out.println("##################");
+                System.out.println();
+        
+                // Actualiza el total de dinero acumulado en la maquina
+                totalDineroAcumulado = totalDineroAcumulado + precioBillete;
+                // Reduce el balance del cliente actual dejandole seguir utilizando la maquina
+                balanceClienteActual = balanceClienteActual - precioBillete;
+                // Billetes vendidos 
+                billetesVendidos = billetesVendidos + 1;
+                // Cada 4 billete con premio
+                billeteConPremio = billeteConPremio - 1;
+                
+                if (tipoMaquina == false){
+                    if (billeteConPremio == 0){
+                        System.out.println("Tienes un descuento de " + ((precioBillete*25)/100) + " euros para el Zara.");
+                        System.out.println();
+                        billeteConPremio = 4;
+                    }
+                }
             }
             else{
-                if (tipoMaquina == true){
-                    // Simula la impresion de un billete
-                    System.out.println("##################");
-                    System.out.println("# Billete de tren:");
-                    System.out.println("# De " + estacionOrigen + " a " + estacionDestino);
-                    System.out.println("# " + precioBillete + " euros.");
-                    System.out.println("##################");
-                    System.out.println();
-            
-                    // Actualiza el total de dinero acumulado en la maquina
-                    totalDineroAcumulado = totalDineroAcumulado + precioBillete;
-                    // Reduce el balance del cliente actual dejandole seguir utilizando la maquina
-                    balanceClienteActual = balanceClienteActual - precioBillete;
-                    // Billetes vendidos 
-                    billetesVendidos = billetesVendidos + 1;
-                }
-                else {
-                    // Simula la impresion de un billete
-                    System.out.println("##################");
-                    System.out.println("# Billete de tren:");
-                    System.out.println("# De " + estacionOrigen + " a " + estacionDestino);
-                    System.out.println("# " + precioBillete + " euros.");
-                    System.out.println("##################");
-                    System.out.println();
-                    System.out.println("Tienes un descuento de " + ((precioBillete*25)/100) + " euros para el Zara.");
-            
-                    // Actualiza el total de dinero acumulado en la maquina
-                    totalDineroAcumulado = totalDineroAcumulado + precioBillete;
-                    // Reduce el balance del cliente actual dejandole seguir utilizando la maquina
-                    balanceClienteActual = balanceClienteActual - precioBillete;
-                    // Billetes vendidos 
-                    billetesVendidos = billetesVendidos + 1;
-                }
+                System.out.println("Error: Maximo de billetes vendidos");
             }
         }
         else {
